@@ -8293,15 +8293,15 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 a.text-primary:focus, a.text-primary:hover {
-  color: #0062cc !important;
+  color: #378f5b !important;
 }
 
 .text-secondary {
-  color: #868e96 !important;
+  color: #818182 !important;
 }
 
 a.text-secondary:focus, a.text-secondary:hover {
-  color: #6c757d !important;
+  color: #18BC9C !important;
 }
 
 .text-success {
