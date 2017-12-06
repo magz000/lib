@@ -1,6 +1,6 @@
 <!-- Contact Section -->
 <section id="contact">
-    <div class="bg-light">
+    <div class="bg-gray">
         <div class="container p-5">
 
             <div class="row">

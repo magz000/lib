@@ -5,7 +5,7 @@
         {{--<hr class="star-dark mb-5">--}}
         <div class="row">
             <div class="ml-auto text-center mt-4">
-                <h6 class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum mauris sed nunc mollis, et eleifend diam consectetur. In eget nunc vel ipsum mattis suscipit in et ligula. Nam sit amet ligula a risus vehicula consectetur eu ut nisl. Nunc fringilla dui eget eleifend ornare. Nulla eget ultricies ex, at suscipit ligula.</h6>
+                <h4 class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum mauris sed nunc mollis, et eleifend diam consectetur. In eget nunc vel ipsum mattis suscipit in et ligula. Nam sit amet ligula a risus vehicula consectetur eu ut nisl. Nunc fringilla dui eget eleifend ornare. Nulla eget ultricies ex, at suscipit ligula.</h4>
             </div>
             {{--<div class="col-lg-4 mr-auto">--}}
                 {{--<p class="lead">Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>--}}
