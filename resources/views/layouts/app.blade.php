@@ -27,7 +27,7 @@
     <link href="{{asset('css/magnific-popup.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/freelancer.css')}}" rel="stylesheet">
+    <link href="{{asset('css/lib.css')}}" rel="stylesheet">
 
 </head>
 
@@ -38,6 +38,7 @@
 
     @include('layouts.partials.navbar')
 
+
     {{--@include('layouts.partials.footer')--}}
 
     <!-- JavaScripts -->
@@ -47,7 +48,7 @@
 
     <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
     <script src="{{asset('js/jquery.easing.js')}}"></script>
-    <script src="{{asset('js/freelancer.js')}}"></script>
+    <script src="{{asset('js/lib.js')}}"></script>
 
 </body>
 </html>

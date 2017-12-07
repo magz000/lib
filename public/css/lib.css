@@ -3,8 +3,14 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/master/LICENSE)
  */
+
+body, html, section{
+  height: 100%;
+}
+
 body {
-  font-family: 'Lato'; }
+  font-family: 'Lato';
+}
 
 h1,
 h2,
@@ -104,8 +110,8 @@ section {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s; }
@@ -126,7 +132,7 @@ section {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; }
     #mainNav.navbar-shrink .navbar-brand {
-      font-size: 1.5em; } }
+      font-size: 1.7em; } }
 
 header.masthead {
   padding-top: calc(6rem + 72px);
@@ -271,5 +277,15 @@ a {
 h2.text-primary:focus, h2.text-primary:hover {
     color: #2c756b !important;
 }
+
+.list-group-item:focus, .list-group-item:hover {
+  background-color: #e1e1e2;
+}
+
+.card-body {
+  overflow-y: scroll !important;
+}
+
+
 
 
