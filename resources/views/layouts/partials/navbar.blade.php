@@ -46,7 +46,7 @@
                     </li>
 
                     <li class="nav-item dropdown mx-0 mx-lg-1">
-                        <a href="#"  class="dropdown-toggle nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger text-uppercase" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#"  class="dropdown-toggle nav-link py-3 px-0 px-lg-3  text-secondary text-uppercase" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 

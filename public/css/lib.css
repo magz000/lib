@@ -279,7 +279,7 @@ h2.text-primary:focus, h2.text-primary:hover {
 }
 
 .list-group-item:focus, .list-group-item:hover {
-  background-color: #e1e1e2;
+  background-color: #ededed !important;
 }
 
 .card-body {

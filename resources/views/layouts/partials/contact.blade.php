@@ -1,6 +1,6 @@
 <!-- Contact Section -->
-<section id="contact">
-    <div class="bg-gray">
+<section id="contact fixed-bottom" style="padding-bottom: 0px !important">
+    <div class="bg-gray h-100">
         <div class="container p-5">
 
             <div class="row">

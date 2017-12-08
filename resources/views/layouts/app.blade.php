@@ -29,6 +29,20 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('css/lib.css')}}" rel="stylesheet">
 
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCgbZp0tCIr2BkoRsfDAfYjpED4oFgvdVE",
+            authDomain: "lib-cravings-messaging.firebaseapp.com",
+            databaseURL: "https://lib-cravings-messaging.firebaseio.com",
+            projectId: "lib-cravings-messaging",
+            storageBucket: "lib-cravings-messaging.appspot.com",
+            messagingSenderId: "1089120360310"
+        };
+        firebase.initializeApp(config);
+    </script>
+
 </head>
 
 <body id="app-layout">
@@ -50,5 +64,70 @@
     <script src="{{asset('js/jquery.easing.js')}}"></script>
     <script src="{{asset('js/lib.js')}}"></script>
 
+
+    <script type="text/javascript">
+
+        var userSelected;
+        var channel;
+
+
+        @if (Auth::check())
+
+        var currUser = {{ Auth::check() ? Auth::user()->id : null }};
+
+
+
+
+        //Chat function
+        $('.userSelected').click(function () {
+
+            $('#message-holder').empty();
+
+            userSelected = $(this).val();
+
+            $('.userSelected').css('background-color', '#fff');
+
+            $(this).css('background-color', '#dadada');
+
+            var name = $('#name' + userSelected).text();
+
+            $('#nameUser').text(name);
+
+            if(currUser < userSelected){
+                channel = currUser + "--a7dnwi--" + userSelected;
+            }else{
+                channel = userSelected + "--a7dnwi--" + currUser;
+            }
+
+            var msgs = firebase.database().ref('channel/' + channel +'/messages');
+
+            msgs.on('child_added', function(snapshot){
+                var data = snapshot.val();
+
+                $('#message-holder').append('<li class="list-group-item"> ' + data.from + ': ' + data.message + '</li>');
+            })
+
+
+        });
+
+        $('#sendMsg').click(function () {
+            var message = $('#msg').val();
+
+            if (message != '') {
+                firebase.database().ref('channel/' + channel + '/messages').push({
+                    from: currUser,
+                    user: userSelected,
+                    message: message,
+                    timestamp: $.now()
+                });
+
+                $('#msg').val('');
+            }
+
+        });
+
+        @endif
+
+    </script>
 </body>
 </html>
