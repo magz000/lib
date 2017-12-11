@@ -104,8 +104,12 @@
             msgs.on('child_added', function(snapshot){
                 var data = snapshot.val();
 
-                $('#message-holder').append('<li class="list-group-item"> ' + data.from + ': ' + data.message + '</li>');
-            })
+                $('#message-holder').append('<li class="list-group-item p-0">   '
+                    + '<div class="p-1 m-1 rounded ' + (data.from == currUser ? 'bg-primary pull-right' : 'bg-gray') + '" style="display:inline-block;width:auto;">'
+                    + data.message
+                    + '</div>' +
+                    '</li> ');
+            });
 
 
         });

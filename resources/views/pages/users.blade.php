@@ -22,8 +22,7 @@
 
                                     <div class="userName">
                                         <div class="text-primary lead mb-0" id="name{{$user->id}}">
-                                            {{$user->name}}
-                                        </div>
+                                            {{$user->name}}</div>
 
                                         <small class="text-secondary">
                                             {{$user->email}}

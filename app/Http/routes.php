@@ -18,3 +18,5 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/users', 'UsersController@index');
+
+
