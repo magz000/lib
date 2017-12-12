@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.public.app')
 
 @section('content')
 
@@ -10,7 +10,7 @@
                         <div class="panel-heading">Dashboard</div>
 
                         <div class="panel-body">
-                            You are logged in!
+                            You are logged in! - {{Auth::user()->type}}
                         </div>
                     </div>
                 </div>

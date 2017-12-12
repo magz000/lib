@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.public.app')
 
 
 @section('content')
-    @include('layouts.partials.header')
+    @include('layouts.public.partials.header')
 
-    @include('layouts.partials.about')
+    @include('layouts.public.partials.about')
 
     <!-- Portfolio Grid Section -->
     <section class="portfolio" id="services">
@@ -97,9 +97,9 @@
         {{--</div>--}}
     {{--</div>--}}
 
-    @include('layouts.partials.loginmodal')
-    @include('layouts.partials.registermodal')
-    @include('layouts.partials.contact')
+    @include('layouts.public.partials.loginmodal')
+    @include('layouts.public.partials.registermodal')
+    @include('layouts.public.partials.contact')
 
 
 

@@ -15,8 +15,31 @@ Route::get('/', 'MainController@index');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'MainController@home');
 
-Route::get('/users', 'UsersController@index');
+Route::get('/users', 'MainController@listUsers');
+
+
+
+
+Route::group(["prefix" => "admin"],function(){
+
+    Route::get('/', 'AdminController@index')->name("admin.login");
+
+    Route::post('login', 'AdminController@login')->name("admin.loginprocess");
+
+    Route::group(["middleware" => ["admin", "auth"]],function(){
+
+        Route::get('home', 'AdminController@home')->name("admin.home");
+
+        Route::get('logout', 'AdminController@logout');
+
+        Route::get('stores', 'AdminController@listStores')->name("admin.stores");
+
+        Route::get('stores/add', 'AdminController@addStore')->name("admin.stores.add");
+    });
+});
+
+
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.public.app')
 
 @section('content')
 
@@ -43,7 +43,7 @@
                         <h5 class="text-white mb-0" style="height: 1.5rem;" id="nameUser">    </h5>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0" id="chat-body">
                         <ul class="list-group list-group-flush" id="message-holder">
 
                         </ul>
@@ -62,6 +62,83 @@
         </div>
     </section>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+
+        var userSelected;
+        var channel;
+
+
+        var currUser = {{ Auth::user()->id }};
+
+
+        //Chat function
+        $('.userSelected').click(function () {
+
+            $('#message-holder').empty();
+
+            userSelected = $(this).val();
+
+            $('.userSelected').css('background-color', '#fff');
+
+            $(this).css('background-color', '#dadada');
+
+            var name = $('#name' + userSelected).text();
+
+            $('#nameUser').text(name);
+
+            if(currUser < userSelected){
+                channel = currUser + "--a7dnwi--" + userSelected;
+            }else{
+                channel = userSelected + "--a7dnwi--" + currUser;
+            }
+
+            var msgs = firebase.database().ref('channel/' + channel +'/messages');
+
+            msgs.on('child_added', function(snapshot){
+                var data = snapshot.val();
+
+                $('#message-holder').append('<li class="list-group-item list-chat">   '
+                    + '<div class="' + (data.from == currUser ? 'chat-from-me pull-right' : 'chat-to-me') + '" style="display:inline-block;width:auto;">'
+                    + data.message
+                    + '</div>' +
+                    '</li> ');
+
+                $('#chat-body').animate({scrollTop: $('#chat-body').prop('scrollHeight')});
+            });
+
+
+        });
+
+        $('#sendMsg').click(function () {
+            var message = $('#msg').val();
+
+            if (message != '') {
+                firebase.database().ref('channel/' + channel + '/messages').push({
+                    from: currUser,
+                    user: userSelected,
+                    message: message,
+                    timestamp: $.now()
+                });
+
+                $('#msg').val('');
+            }
+
+        });
+
+        $(document).on('keypress', '#msg', function (e) {
+            switch (e.keyCode) {
+                case 13 :
+                    $('#sendMsg').trigger('click')
+                    break;
+            }
+        });
+
+
+
+    </script>
 @endsection
 
 

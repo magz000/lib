@@ -50,7 +50,7 @@
 
     @yield('content')
 
-    @include('layouts.partials.navbar')
+    @include('layouts.public.partials.navbar')
 
 
     {{--@include('layouts.partials.footer')--}}
@@ -65,73 +65,6 @@
     <script src="{{asset('js/lib.js')}}"></script>
 
 
-    <script type="text/javascript">
-
-        var userSelected;
-        var channel;
-
-
-        @if (Auth::check())
-
-        var currUser = {{ Auth::check() ? Auth::user()->id : null }};
-
-
-
-
-        //Chat function
-        $('.userSelected').click(function () {
-
-            $('#message-holder').empty();
-
-            userSelected = $(this).val();
-
-            $('.userSelected').css('background-color', '#fff');
-
-            $(this).css('background-color', '#dadada');
-
-            var name = $('#name' + userSelected).text();
-
-            $('#nameUser').text(name);
-
-            if(currUser < userSelected){
-                channel = currUser + "--a7dnwi--" + userSelected;
-            }else{
-                channel = userSelected + "--a7dnwi--" + currUser;
-            }
-
-            var msgs = firebase.database().ref('channel/' + channel +'/messages');
-
-            msgs.on('child_added', function(snapshot){
-                var data = snapshot.val();
-
-                $('#message-holder').append('<li class="list-group-item p-0">   '
-                    + '<div class="p-1 m-1 rounded ' + (data.from == currUser ? 'bg-primary pull-right' : 'bg-gray') + '" style="display:inline-block;width:auto;">'
-                    + data.message
-                    + '</div>' +
-                    '</li> ');
-            });
-
-
-        });
-
-        $('#sendMsg').click(function () {
-            var message = $('#msg').val();
-
-            if (message != '') {
-                firebase.database().ref('channel/' + channel + '/messages').push({
-                    from: currUser,
-                    user: userSelected,
-                    message: message,
-                    timestamp: $.now()
-                });
-
-                $('#msg').val('');
-            }
-
-        });
-
-        @endif
-
-    </script>
+    @yield('script');
 </body>
 </html>

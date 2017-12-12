@@ -278,12 +278,34 @@ h2.text-primary:focus, h2.text-primary:hover {
     color: #2c756b !important;
 }
 
-.list-group-item:focus, .list-group-item:hover {
+.list-user:focus, .list-user:hover {
   background-color: #ededed !important;
 }
 
 .card-body {
   overflow-y: scroll !important;
+}
+
+.list-chat{
+  border: 0px;
+  padding: .25rem;
+}
+
+
+.chat-from-me {
+  background-color: #4fd1bf;
+  padding: .25rem 1rem .25rem 1.25rem;
+  margin: .25rem;
+  border-radius: .50rem .50rem 0rem .50rem;
+
+}
+
+.chat-to-me {
+  background-color: #cdcdcd;
+  padding: .25rem 1.25rem .25rem 1rem;
+  margin: .25rem;
+  border-radius: .50rem .50rem .50rem 0rem;
+
 }
 
 
