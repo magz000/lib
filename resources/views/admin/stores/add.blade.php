@@ -2,15 +2,6 @@
 
 @section('content')
 
-    <style>
-        #map {
-            background-color: #d1d1d1;
-            height: 250px;
-            width: 80%;
-            margin: 1rem;
-        }
-    </style>
-
     <section>
         <div class="container p-5">
             <div class="row justify-content-center">
@@ -21,10 +12,19 @@
                         <div class="card-body">
                             <a class="btn-primary text-white rounded p-2 pull-right" href="{{url('admin/stores')}}"> Back </a>
 
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
 
                             <div id="map"></div>
 
-                            <form  role="form" method="POST" action="">
+                            <form  role="form" method="POST" action="{{ route('admin.stores.addprocess') }}">
+                                {{ csrf_field() }}
+
                                 <div class="form-group">
                                     <label for="name" class="col-md-6 control-label text-secondary">Name</label>
 
@@ -63,8 +63,6 @@
                                         </div>
 
                                     </div>
-
-
 
                                 </div>
 
@@ -143,10 +141,6 @@
 
 
 
-            // var marker = new google.maps.Marker({
-            //     position: uluru,
-            //     map: map
-            // });
         }
     </script>
 

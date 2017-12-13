@@ -308,6 +308,67 @@ h2.text-primary:focus, h2.text-primary:hover {
 
 }
 
+#map {
+    background-color: #d1d1d1;
+    height: 250px;
+    width: 80%;
+    margin: 1rem;
+}
+
+.shadow {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shadow:hover {
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+
+
+.pagination > li:first-child a , .pagination > li:first-child span{
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.pagination > li:last-child a, .pagination > li:last-child span{
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.pagination .active a , .pagination .active span{
+    z-index: 2;
+    color: #fff;
+    background-color: #3c9f92;
+    border-color: #3c9f92;
+}
+
+.pagination .disabled a , .pagination .disabled span  {
+    color: #868e96;
+    pointer-events: none;
+    background-color: #e6e6e6;
+    border-color: #ddd;
+}
+
+.pagination > li a , .pagination > li span{
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #3c9f92;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.pagination > li a:focus, .pagination > li a:hover , .pagination > li span:focus, .pagination > li span:hover {
+    color: #2c746b;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #ddd;
+}
+
 
 
 

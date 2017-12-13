@@ -12,6 +12,12 @@
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
                                 {{ csrf_field() }}
 
+                                @if(Session::has('flash_message'))
+                                    <div class="alert alert-danger">
+                                        {{ Session::get('flash_message') }}
+                                    </div>
+                                @endif
+
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="col-md-8 control-label text-secondary">E-Mail Address </label>
 

@@ -37,6 +37,11 @@ Route::group(["prefix" => "admin"],function(){
         Route::get('stores', 'AdminController@listStores')->name("admin.stores");
 
         Route::get('stores/add', 'AdminController@addStore')->name("admin.stores.add");
+
+        Route::post('stores/add', 'AdminController@addStoreProcess')->name("admin.stores.addprocess");
+
+        Route::get('stores/show/{id}', 'AdminController@showStore')->name("admin.store.show");
+
     });
 });
 
