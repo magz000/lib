@@ -7,10 +7,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="card panel-default">
-                        <div class="card-heading p-2 bg-primary text-white">Add Store</div>
+                        <div class="card-heading p-2 bg-primary text-white">Edit Store</div>
 
                         <div class="card-body">
-                            <a class="btn-primary text-white rounded p-2 pull-right" href="{{url('admin/stores')}}"> Back </a>
+                            <a class="btn-primary text-white rounded p-2 pull-right" href="{{ route('admin.stores.show', $store->id) }}"> Back </a>
 
                             @if($errors->any())
                                 <div class="alert alert-danger">
@@ -22,8 +22,10 @@
 
                             <div id="map"></div>
 
-                            <form  role="form" method="POST" action="{{ route('admin.stores.addprocess') }}">
+                            <form  role="form" method="POST" action="{{ route('admin.stores.editprocess', $store->id) }}">
                                 {{ csrf_field() }}
+
+                                <input type="hidden" name="_method" value="patch" />
 
                                 <div class="form-group">
                                     <label for="name" class="col-md-6 control-label text-secondary">Name</label>

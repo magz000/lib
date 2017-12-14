@@ -134,6 +134,57 @@ section {
     #mainNav.navbar-shrink .navbar-brand {
       font-size: 1.7em; } }
 
+
+#mainNav2 {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-weight: lighter;
+  font-family: 'Quicksand'; }
+#mainNav2 .navbar-brand {
+  color: #fff; }
+#mainNav2 .navbar-nav {
+  margin-top: .5rem;
+  letter-spacing: 0.0625rem; }
+#mainNav2 .navbar-nav li.nav-item a.nav-link {
+  color: #3c9f92; }
+#mainNav2 .navbar-nav li.nav-item a.nav-link:hover {
+  color: #fff; }
+#mainNav2 .navbar-nav li.nav-item a.nav-link:active, #mainNav2 .navbar-nav li.nav-item a.nav-link:focus {
+  color: #3c9f92; }
+#mainNav2 .navbar-nav li.nav-item a.nav-link.active {
+  color: #fff; }
+#mainNav2 .navbar-toggler {
+  font-size: 80%;
+  padding: 0.8rem; }
+
+@media (min-width: 992px) {
+  #mainNav2 {
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+    -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
+    transition: padding-top 0.3s, padding-bottom 0.3s; }
+  #mainNav2 .navbar-brand {
+    font-size: 1.5em;
+    -webkit-transition: font-size 0.3s;
+    -moz-transition: font-size 0.3s;
+    transition: font-size 0.3s; }
+  #mainNav2 .navbar-nav {
+    margin-top: 0; }
+  #mainNav2 .navbar-nav > li.nav-item > a.nav-link.active {
+    color: #fff;
+    background: #3c9f92; }
+  #mainNav2 .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav2 .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+    color: #fff;
+    background: #3c9f92; }
+  #mainNav2.navbar-shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; }
+  #mainNav2.navbar-shrink .navbar-brand {
+    font-size: 1.5em; } }
+
+
+
 header.masthead {
   padding-top: calc(6rem + 72px);
   padding-bottom: 6rem; }

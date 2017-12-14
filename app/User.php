@@ -28,4 +28,8 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->type == 1;
     }
+
+    public function isStore(){
+        return $this->type == 2;
+    }
 }
