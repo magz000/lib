@@ -1,4 +1,4 @@
-@extends('layouts.public.app')
+@extends('layouts.client.app')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3 class="text-primary">Register</h3></div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ route('client.register') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

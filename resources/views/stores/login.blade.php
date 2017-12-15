@@ -9,7 +9,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3 class="text-primary">Login</h3></div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ route('store.loginprocess')}}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ route('stores.loginprocess')}}">
                                 {{ csrf_field() }}
 
                                 @if(Session::has('flash_message'))

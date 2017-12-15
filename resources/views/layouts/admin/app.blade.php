@@ -50,7 +50,7 @@
 
     @yield('content')
 
-    @include('layouts.admin.partials.navbar')
+    @include('layouts.admin.navbar')
 
 
     {{--@include('layouts.partials.footer')--}}

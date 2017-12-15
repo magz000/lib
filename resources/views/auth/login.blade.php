@@ -1,4 +1,4 @@
-@extends('layouts.public.app')
+@extends('layouts.client.app')
 
 @section('content')
 
@@ -9,8 +9,20 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3 class="text-primary">Login</h3></div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ route('client.loginprocess') }}">
                                 {{ csrf_field() }}
+
+                                @if(Session::has('flash_message'))
+                                    <div class="alert alert-danger">
+                                        {{ Session::get('flash_message') }}
+                                    </div>
+                                @endif
+
+                                @if(Session::has('registration_successful'))
+                                    <div class="alert alert-success">
+                                        {{ Session::get('registration_successful') }}
+                                    </div>
+                                @endif
 
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="col-md-8 control-label text-secondary">E-Mail Address </label>

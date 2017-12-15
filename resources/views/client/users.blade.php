@@ -1,4 +1,4 @@
-@extends('layouts.public.app')
+@extends('layouts.client.app')
 
 @section('content')
 
@@ -17,7 +17,7 @@
 
                                 <li class="list-group-item list-user userSelected" id="{{$user->id}}" value="{{$user->id}}" >
                                     <div class="rounded-circle float-left mr-3"
-                                         style="background: url('img/portfolio/cake.png'); background-position:center center; height: 60px; width: 60px; background-size: cover;">
+                                         style="background: url('/img/portfolio/cake.png'); background-position:center center; height: 60px; width: 60px; background-size: cover;">
                                     </div>
 
                                     <div class="userName">

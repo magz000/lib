@@ -1,6 +1,6 @@
 <nav class="navbar-expand-lg navbar fixed-top bg-primary py-1" id="mainNav2"> {{-- --}}
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger text-white" href="{{ route('store.login') }}">LIB Store</a>
+        <a class="navbar-brand js-scroll-trigger text-white" href="{{ route('stores.login') }}">LIB Store</a>
 
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
@@ -19,7 +19,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li class="px-3"><a href="{{ route('store.logout')}}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li class="px-3"><a href="{{ route('stores.logout')}}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
 
                     </li>

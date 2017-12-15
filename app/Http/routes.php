@@ -11,17 +11,36 @@
 |
 */
 
-Route::get('/', 'MainController@index');
+
+
+Route::get('/', 'ClientController@index')->name("public.index");
 
 Route::auth();
 
-Route::get('/home', 'MainController@home');
-
-Route::get('/users', 'MainController@listUsers');
-
-
 Route::get('/stores/search', 'AdminController@queryJSON')->middleware('api')->name('queryJSON') ;
 
+Route::group(["prefix" => "client"], function(){
+
+    Route::get('/', 'ClientController@index')->name("admin.login");
+
+    Route::post('login', 'ClientController@login')->name("client.loginprocess");
+
+    Route::post('register', 'ClientController@register')->name("client.register");
+
+    Route::group(["middleware" => ["client", "auth"]] , function(){
+        Route::get('home', 'ClientController@home')->name("client.home");
+
+        Route::get('logout', 'ClientController@logout')->name("client.logout");
+
+        Route::get('profile', 'ClientController@profile')->name("client.profile");
+
+        Route::get('users', 'ClientController@listUsers')->name("client.users");
+
+        Route::get('stores', 'ClientController@listStores')->name("client.stores");
+
+        Route::get('stores/search', 'ClientController@query')->name('client.stores.search');
+    });
+});
 
 
 
@@ -64,15 +83,15 @@ Route::group(["prefix" => "admin"],function(){
 
 Route::group(["prefix" => "store"] , function(){
 
-    Route::get('/', 'StoreController@index')->name("store.login");
+    Route::get('/', 'GroupController@index')->name("stores.login");
 
-    Route::post('login', 'StoreController@login')->name("store.loginprocess");
+    Route::post('login', 'GroupController@login')->name("stores.loginprocess");
 
     Route::group(["middleware" => ["store", "auth"]],function(){
 
-        Route::get('home', 'StoreController@home')->name("store.home");
+        Route::get('home', 'GroupController@home')->name("stores.home");
 
-        Route::get('logout', 'StoreController@logout')->name("store.logout");
+        Route::get('logout', 'GroupController@logout')->name("stores.logout");
 
     });
 

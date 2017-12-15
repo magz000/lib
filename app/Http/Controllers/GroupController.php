@@ -9,22 +9,22 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class StoreController extends Controller
+class GroupController extends Controller
 {
 
     public function index()
     {
         if(Auth::check()){
-            return redirect()->route('store.home');
+            return redirect()->route('stores.home');
         }
-        return view('store.login');
+        return view('stores.login');
     }
 
     public function home(){
 
         $store = Store::findOrFail(Auth::user()->store_id);
 
-        return view('store.home', ['store' => $store]);
+        return view('stores.home', ['store' => $store]);
     }
 
     public function login(Request $request){
@@ -38,7 +38,7 @@ class StoreController extends Controller
             'password'  => $request->input('password'),
             'type' => 2,
         ])) {
-            return redirect()->route('store.home');
+            return redirect()->route('stores.home');
         } else {
             Session::flash('flash_message', 'Email or Password is Incorrect.');
             return redirect(url()->previous());
@@ -47,7 +47,7 @@ class StoreController extends Controller
 
     public function logout() {
         Auth::logout();
-        return redirect()->route('store.login');
+        return redirect()->route('stores.login');
     }
 
 

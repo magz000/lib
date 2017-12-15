@@ -16,7 +16,11 @@ class Store
     {
         // If the authenticated user is not an admin (not = to 1), then redirect back to home page
         if(Auth::check() && !Auth::user()->isStore()) {
-            return redirect('/');
+            if(Auth::user()->isClient()){
+                return redirect('/');
+            }elseif(Auth::user()->isAdmin()){
+                return redirect()->route('admin.login');
+            }
         }
 
         return $next($request);

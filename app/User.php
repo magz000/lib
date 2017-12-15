@@ -32,4 +32,8 @@ class User extends Authenticatable
     public function isStore(){
         return $this->type == 2;
     }
+
+    public function isClient(){
+        return $this->type == 3;
+    }
 }
