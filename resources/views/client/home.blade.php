@@ -13,7 +13,7 @@
 
                     <div class="row justify-content-center w-100" id="store-container">
 
-                        <input type="text" class="form-control col-md-8" placeholder="Search" name="query" id="query"/>
+                        <input class="form-control col-md-8" placeholder="Search" name="query" id="query"/>
 
                         <div class="row justify-content-center w-100" id="search-container">
 

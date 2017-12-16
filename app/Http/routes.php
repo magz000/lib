@@ -32,13 +32,22 @@ Route::group(["prefix" => "client"], function(){
 
         Route::get('logout', 'ClientController@logout')->name("client.logout");
 
-        Route::get('profile', 'ClientController@profile')->name("client.profile");
+        Route::get('profile/{id}/show', 'ClientController@profile')->name("client.profile");
+
+        Route::get('profile/edit', 'ClientController@editProfile')->name("client.profile.edit");
+
+        Route::patch('profile/{id}/edit', 'ClientController@editProfileProcess')->name("client.profile.editprocess");
 
         Route::get('users', 'ClientController@listUsers')->name("client.users");
 
         Route::get('stores', 'ClientController@listStores')->name("client.stores");
 
         Route::get('stores/search', 'ClientController@query')->name('client.stores.search');
+
+        Route::post('stores/join/{id}/{store_id}', 'ClientController@joinGroup')->name('client.stores.join');
+
+        Route::get('stores/{id}/show', 'ClientController@showStore')->name('client.stores.show');
+
     });
 });
 
@@ -92,6 +101,10 @@ Route::group(["prefix" => "store"] , function(){
         Route::get('home', 'GroupController@home')->name("stores.home");
 
         Route::get('logout', 'GroupController@logout')->name("stores.logout");
+
+        Route::get('groupchat/getrequest', 'GroupController@getRequest')->name("stores.getrequest");
+
+        Route::get('groupchat/updaterequest/{id}/{status}', 'GroupController@updateRequest')->name("stores.updaterequest");
 
     });
 

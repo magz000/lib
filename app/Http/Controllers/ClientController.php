@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Avatar;
+use App\Groupchat;
 use App\Store;
 use Illuminate\Http\Request;
 
@@ -40,6 +42,12 @@ class ClientController extends Controller
         return view('client.stores.list', ['stores' => $stores]);
     }
 
+    public function showStore($id){
+        $store = Store::findOrFail($id);
+
+        return view('client.stores.show', ["store" => $store]);
+    }
+
     public function query(Request $request){
         $stores = Store::where('name','like','%'. $request->q .'%')
             ->orWhere('address', 'like', '%'. $request->q.'%')
@@ -51,8 +59,45 @@ class ClientController extends Controller
                                                     'longitude' => $request->lng]);
     }
 
-    public function profile(){
-        return view('client.profile');
+    public function joinGroup($id, $store_id){
+        $groupchat = new Groupchat;
+
+        $groupchat->user_id = $id;
+        $groupchat->store_id = $store_id;
+        $groupchat->status = 0;
+        $groupchat->save();
+
+        return redirect(url()->previous());
+    }
+
+    public function profile($id){
+        $user = User::findOrFail($id);
+
+        return view('client.profile.show', ["user" => $user]);
+    }
+
+    public function editProfile(){
+
+        $user = User::findOrFail(Auth::user()->id);
+
+        $avatars = Avatar::all();
+
+        return view('client.profile.edit', ["user" => $user, "avatars" => $avatars]);
+    }
+
+    public function editProfileProcess(Request $request, $id){
+
+        $user = User::findOrFail($id);
+
+        $user->name = $request->name;
+        $user->skills = $request->skills;
+        $user->looking_for = $request->looking_for;
+        $user->avatar_id =$request->avatar_id;
+        $user->save();
+
+        Session::flash('flash_message', 'Edit Successful');
+        return redirect()->route('client.profile',  $id);
+
     }
 
     public function login(Request $request){

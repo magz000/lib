@@ -25,6 +25,8 @@
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.edit', $store->id)}}">Edit</a>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.addemployee', $store->id)}}">Add Employee</a>
 
+                    <br><br>
+                    <br><br>
 
                 </div>
 

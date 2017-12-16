@@ -4,9 +4,6 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/master/LICENSE)
  */
 
-body, html, section{
-  height: 100%;
-}
 
 body {
   font-family: 'Lato';
@@ -333,7 +330,7 @@ h2.text-primary:focus, h2.text-primary:hover {
   background-color: #ededed !important;
 }
 
-.card-body {
+.card-scroll {
   overflow-y: scroll !important;
 }
 
@@ -346,7 +343,6 @@ h2.text-primary:focus, h2.text-primary:hover {
 .chat-from-me {
   background-color: #4fd1bf;
   padding: .25rem 1rem .25rem 1.25rem;
-  margin: .25rem;
   border-radius: .50rem .50rem 0rem .50rem;
 
 }
@@ -354,7 +350,6 @@ h2.text-primary:focus, h2.text-primary:hover {
 .chat-to-me {
   background-color: #cdcdcd;
   padding: .25rem 1.25rem .25rem 1rem;
-  margin: .25rem;
   border-radius: .50rem .50rem .50rem 0rem;
 
 }
@@ -420,6 +415,27 @@ h2.text-primary:focus, h2.text-primary:hover {
     border-color: #ddd;
 }
 
+.avatar-sm{
+  background-position:center center !important;
+  height: 2rem !important;
+  width: 2rem !important;
+  background-size: cover !important;
+}
+
+.avatar-md{
+  background-position:center center !important;
+  height: 4rem !important;
+  width: 4rem !important;
+  background-size: cover !important;
+
+}
+
+.avatar-lg{
+  background-position:center center !important;
+  height: 10rem  !important;
+  width: 10rem  !important;
+  background-size: cover  !important;
+}
 
 
 

@@ -88,8 +88,6 @@ class AdminController extends Controller
         Session::flash('flash_message', 'Successfully updated!');
 
         return redirect()->route('admin.stores.show', $id);
-
-
     }
 
     public function deleteStore($id){

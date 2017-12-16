@@ -36,4 +36,12 @@ class User extends Authenticatable
     public function isClient(){
         return $this->type == 3;
     }
+
+    public function groupchat(){
+        return $this->hasOne('App\Groupchat');
+    }
+
+    public function avatar(){
+        return $this->belongsTo('App\Avatar');
+    }
 }

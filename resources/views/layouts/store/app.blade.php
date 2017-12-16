@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>LIB Admin</title>
+    <title>LIB Store</title>
     <link rel="icon" href="{{asset('img/book.png')}}">
 
     <!-- Bootstrap core CSS -->
@@ -65,6 +65,6 @@
     <script src="{{asset('js/lib.js')}}"></script>
 
 
-    @yield('script');
+    @yield('script')
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Groupchat;
 use App\Store;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,24 @@ class GroupController extends Controller
 
         return view('stores.home', ['store' => $store]);
     }
+
+    public function getRequest(){
+
+        $groupchats = Groupchat::where('store_id', '=', Auth::user()->store_id)->first();
+
+        return json_encode($groupchats->user);
+    }
+
+    public function updateRequest($id, $status){
+        $groupchat = Groupchat::findOrFail($id);
+
+        $groupchat->status = $status;
+        $groupchat->save();
+
+        return redirect(url()->previous());
+    }
+
+
 
     public function login(Request $request){
         $this->validate($request, [

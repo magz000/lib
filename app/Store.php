@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Store extends Model
 {
@@ -22,5 +23,34 @@ class Store extends Model
         return ($miles * 1.609344);
 
     }
+
+    public function groupchat(){
+        return $this->hasMany('App\Groupchat');
+    }
+
+
+    public function pending_groupchat() {
+        return $this->groupchat()->where('status', '=', 0);
+    }
+
+    public function accepted_groupchat() {
+        return $this->groupchat()->where('status', '=', 1);
+    }
+
+    public function declined_groupchat() {
+        return $this->groupchat()->where('status', '=', 2);
+    }
+
+    public function removed_groupchat() {
+        return $this->groupchat()->where('status', '=', 3);
+    }
+
+    public function user_already_accepted($id){
+        return $this->groupchat()->where('status', '=', 1)->where('user_id', '=', $id)->count() > 0;
+    }
+
+
+
+
 
 }

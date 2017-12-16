@@ -10,7 +10,7 @@
                         <h5 class="text-white mb-0"> Users </h5>
                     </div>
 
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 card-scroll">
                         <ul class="list-group list-group-flush">
 
                             @foreach($users as $user)
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="col-md-5 m-1 card px-0">
-                    <div class="card-header bg-primary">
+                    <div class="card-header bg-primary card-scroll">
                         <h5 class="text-white mb-0" style="height: 1.5rem;" id="nameUser">    </h5>
                     </div>
 

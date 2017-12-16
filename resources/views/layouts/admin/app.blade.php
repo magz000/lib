@@ -65,6 +65,6 @@
     <script src="{{asset('js/lib.js')}}"></script>
 
 
-    @yield('script');
+    @yield('script')
 </body>
 </html>
