@@ -35,6 +35,20 @@ class GroupController extends Controller
         return json_encode($groupchats->user);
     }
 
+    public function getRequestPending(){
+
+        $store = Store::findOrFail(Auth::user()->store_id);
+
+        return view('stores.requests.pending', ['store' => $store]);
+    }
+
+    public function getRequestAccepted(){
+
+        $store = Store::findOrFail(Auth::user()->store_id);
+
+        return view('stores.requests.accepted', ['store' => $store]);
+    }
+
     public function updateRequest($id, $status){
         $groupchat = Groupchat::findOrFail($id);
 

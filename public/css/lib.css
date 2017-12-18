@@ -343,14 +343,14 @@ h2.text-primary:focus, h2.text-primary:hover {
 .chat-from-me {
   background-color: #4fd1bf;
   padding: .25rem 1rem .25rem 1.25rem;
-  border-radius: .50rem .50rem 0rem .50rem;
+  border-radius: 1rem 1rem .25rem 1rem;
 
 }
 
 .chat-to-me {
   background-color: #cdcdcd;
   padding: .25rem 1.25rem .25rem 1rem;
-  border-radius: .50rem .50rem .50rem 0rem;
+  border-radius: 1rem 1rem 1rem .25rem;
 
 }
 

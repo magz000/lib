@@ -118,6 +118,21 @@ class ClientController extends Controller
         }
     }
 
+    public function updateRequest($id, $status){
+        $groupchat = Groupchat::findOrFail($id);
+
+        $groupchat->status = $status;
+        $groupchat->save();
+
+        return redirect(url()->previous());
+    }
+
+    public function getStatus($id){
+        $groupchats = Groupchat::findOrFail($id);
+
+        return $groupchats->status;
+    }
+
     public function logout() {
         Auth::logout();
         return redirect()->route('public.index');

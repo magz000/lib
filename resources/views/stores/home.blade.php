@@ -16,7 +16,7 @@
                         Requests to Join
                     </h4>
 
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" id="pending-container">
 
                     @foreach($store->pending_groupchat as $groupchat)
                         @php
@@ -25,19 +25,33 @@
 
                         <div class="card col-md-10 mt-2 shadow">
                             <div class="card-body">
-                                <div class="rounded-circle float-left mr-3 avatar-md"
-                                     style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
-                                </div>
-                                <div>
-                                    <div class="text-primary lead mb-0">
-                                        {{$user->name}}</div>
+                                <div class="row">
+                                    <div class="rounded-circle float-left mr-3 avatar-md"
+                                         style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
+                                    </div>
+                                    <div>
+                                        <div class="text-primary lead mb-0">
+                                            {{$user->name}}</div>
 
-                                    <small class="text-secondary">
-                                        {{$user->email}}
-                                    </small>
+                                        <small class="text-secondary">
+                                            {{$user->email}}
+                                        </small><br>
+
+                                        @if($user->skills != null)
+                                            <small class="text-secondary">
+                                                Skills: {{$user->skills}}
+                                            </small><br>
+                                        @endif
+
+
+                                        @if($user->looking_for != null)
+                                            <small class="text-secondary">
+                                                Looking for: {{$user->looking_for}}
+                                            </small><br>
+                                        @endif
+                                    </div>
                                 </div>
 
-                                <br>
                                 <a class="btn btn-danger text-white pull-right" href="{{route('stores.updaterequest', [$groupchat->id, 2])}}">Decline</a>
                                 <a class="btn btn-primary text-white pull-right mx-1" href="{{route('stores.updaterequest', [$groupchat->id, 1])}}">Accept</a>
                             </div>
@@ -52,7 +66,7 @@
                         Accepted
                     </h4>
 
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" id="accepted-container">
 
                     @foreach($store->accepted_groupchat as $groupchat)
                         @php
@@ -61,16 +75,31 @@
 
                         <div class="card col-md-10 mt-2 shadow">
                             <div class="card-body">
-                                <div class="rounded-circle float-left mr-3 avatar-md"
-                                     style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
-                                </div>
-                                <div>
-                                    <div class="text-primary lead mb-0">
-                                        {{$user->name}}</div>
+                                <div class="row">
+                                    <div class="rounded-circle mr-3 avatar-md"
+                                         style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
+                                    </div>
+                                    <div>
+                                        <div class="text-primary lead mb-0">
+                                            {{$user->name}}</div>
 
-                                    <small class="text-secondary">
-                                        {{$user->email}}
-                                    </small>
+                                        <small class="text-secondary">
+                                            {{$user->email}}
+                                        </small><br>
+
+                                        @if($user->skills != null)
+                                            <small class="text-secondary">
+                                                Skills: {{$user->skills}}
+                                            </small><br>
+                                        @endif
+
+
+                                        @if($user->looking_for != null)
+                                            <small class="text-secondary">
+                                                Looking for: {{$user->looking_for}}
+                                            </small><br>
+                                        @endif
+                                    </div>
                                 </div>
 
                                 <br>
@@ -85,6 +114,35 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+        // setTimeout(function(){
+        //     window.location.reload(true);
+        // }, 5000)
+
+        setInterval(function(){
+            $.ajax({
+                url: "{{route('stores.getrequest.pending')}}",
+                type: "GET",
+                dataType: "html",
+                success: function(data){
+                    $('#pending-container').html(data);
+                }
+            });
+
+            $.ajax({
+                url: "{{route('stores.getrequest.accepted')}}",
+                type: "GET",
+                dataType: "html",
+                success: function(data){
+                    $('#accepted-container').html(data);
+                }
+            });
+        }, 5000);
+    </script>
+
 @endsection
 
 

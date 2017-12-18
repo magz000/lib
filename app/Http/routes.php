@@ -48,6 +48,10 @@ Route::group(["prefix" => "client"], function(){
 
         Route::get('stores/{id}/show', 'ClientController@showStore')->name('client.stores.show');
 
+        Route::get('groupchat/{id}/status', 'ClientController@getStatus')->name('client.groupchat.status');
+
+        Route::patch('groupchat/updaterequest/{id}/{status}', 'ClientController@updateRequest')->name("client.updaterequest");
+
     });
 });
 
@@ -103,6 +107,10 @@ Route::group(["prefix" => "store"] , function(){
         Route::get('logout', 'GroupController@logout')->name("stores.logout");
 
         Route::get('groupchat/getrequest', 'GroupController@getRequest')->name("stores.getrequest");
+
+        Route::get('groupchat/getrequest/pending', 'GroupController@getRequestPending')->name("stores.getrequest.pending");
+
+        Route::get('groupchat/getrequest/accepted', 'GroupController@getRequestAccepted')->name("stores.getrequest.accepted");
 
         Route::get('groupchat/updaterequest/{id}/{status}', 'GroupController@updateRequest')->name("stores.updaterequest");
 

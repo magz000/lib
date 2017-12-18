@@ -49,6 +49,10 @@ class Store extends Model
         return $this->groupchat()->where('status', '=', 1)->where('user_id', '=', $id)->count() > 0;
     }
 
+    public function user_already_pending($id){
+        return $this->groupchat()->where('status', '=', 0)->where('user_id', '=', $id)->count() > 0;
+    }
+
 
 
 
