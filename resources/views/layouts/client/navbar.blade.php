@@ -29,16 +29,17 @@
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger" >Events</a>
                     </li>
+
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger" href="/#contact">Contact</a>
                     </li>
 
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger" href="login">Login</a>
+                        <a class="nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger" data-toggle="modal" data-target="#login">Login</a>
                     </li>
 
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger" href="register">Register</a>
+                        <a class="nav-link py-3 px-0 px-lg-3  text-secondary js-scroll-trigger" data-toggle="modal" data-target="#register">Register</a>
                     </li>
                 @else
                     <li class="nav-item mx-0 mx-lg-1">

@@ -52,6 +52,7 @@ Route::group(["prefix" => "client"], function(){
 
         Route::patch('groupchat/updaterequest/{id}/{status}', 'ClientController@updateRequest')->name("client.updaterequest");
 
+
     });
 });
 
@@ -82,6 +83,10 @@ Route::group(["prefix" => "admin"],function(){
         Route::patch('stores/{id}/edit', 'AdminController@editStoreProcess')->name("admin.stores.editprocess");
 
         Route::delete('stores/{id}/delete/', 'AdminController@deleteStore')->name('admin.stores.delete');
+
+        Route::get('stores/{id}/changecoverimage', 'AdminController@changeCoverImage')->name('admin.stores.changecoverimage');
+
+        Route::patch('stores/{id}/changecoverimage', 'AdminController@changeCoverImageProcess')->name('admin.stores.changecoverimageprocess');
 
         Route::get('stores/search', 'AdminController@query')->name('admin.stores.search');
 

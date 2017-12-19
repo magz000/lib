@@ -22,7 +22,7 @@
 
                             <div id="map"></div>
 
-                            <form  role="form" method="POST" action="{{ route('admin.stores.addprocess') }}">
+                            <form  role="form" method="POST" enctype="multipart/form-data" action="{{ route('admin.stores.addprocess') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group">

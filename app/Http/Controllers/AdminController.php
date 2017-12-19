@@ -29,7 +29,7 @@ class AdminController extends Controller
     }
 
     public function listStores(){
-        $stores = Store::paginate(5);
+        $stores = Store::orderBy('created_at', 'desc')->paginate(5);
 
         return view('admin.stores.list', ['stores' => $stores]);
     }
@@ -52,7 +52,6 @@ class AdminController extends Controller
         $store->address = $request->address;
         $store->latitude = $request->latitude;
         $store->longitude = $request->longitude;
-
         $store->save();
 
         Session::flash('flash_message', 'Successfully added!');
@@ -75,19 +74,60 @@ class AdminController extends Controller
         return view('admin.stores.edit', ['store' => $store, 'action' => 'edit']);
     }
 
-    public function editStoreProcess(Request $request, $id){
+    public function editStoreProcess(Request $request, $id)
+    {
         $store = Store::findOrFail($id);
 
         $store->name = $request->name;
         $store->address = $request->address;
         $store->latitude = $request->latitude;
         $store->longitude = $request->longitude;
-
         $store->save();
 
         Session::flash('flash_message', 'Successfully updated!');
 
         return redirect()->route('admin.stores.show', $id);
+
+    }
+
+    public function changeCoverImage($id){
+        $store = Store::findOrFail($id);
+
+        return view('admin.stores.changecoverimage', ['store' => $store]);
+    }
+
+    public function changeCoverImageProcess(Request $request, $id){
+
+        $store = Store::findOrFail($id);
+
+        if ($request->hasFile('cover_image')) {
+
+            $file = $request->file('cover_image');
+
+            $destinationPath = 'img/covers';
+
+            if ($store->cover_image != null) {
+                if(file_exists($destinationPath . '/' . $store->cover_image))
+                    unlink($destinationPath . '/' . $store->cover_image) or die("Couldn't delete file");
+            }
+
+            $filename = 'store-' . $id . '-' . $store->name . '.' . $file->getClientOriginalExtension();
+
+            $file->move($destinationPath, $filename);
+
+            $store->cover_image = $filename;
+
+            $store->save();
+
+            Session::flash('flash_message', 'Successfully uploaded!');
+
+            return redirect()->route('admin.stores.show', $id);
+        }else{
+            Session::flash('upload_failed', 'Upload Failed!');
+
+            return redirect()->route('admin.stores.show', $id);
+        }
+
     }
 
     public function deleteStore($id){

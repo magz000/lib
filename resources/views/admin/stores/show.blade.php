@@ -2,20 +2,31 @@
 
 @section('content')
 
-    <section>
-        <div class="container p-5">
+    <section class="pt-5">
+        <div class="">
+
+            @if($store->cover_image != null)
+            <div class="cover-image"
+                 style="background: url('/img/covers/{{$store->cover_image}}');">
+            </div>
+            @endif
 
             @if(Session::has('flash_message'))
-                <div class="alert alert-success">
+                <div class="alert alert-success mt-5 mx-5">
                     {{ Session::get('flash_message') }}
                 </div>
             @endif
 
-            <div class="row justify-content-center">
+            @if(Session::has('upload_failed'))
+                <div class="alert alert-success mt-5 mx-5">
+                    {{ Session::get('upload_failed') }}
+                </div>
+             @endif
+
+            <div class="row p-5 justify-content-center">
 
 
-                <div class="col-md-5 col-md-offset-1">
-
+                <div class="col-md-6">
 
                     <h1 class="text-primary">{{$store->name}}</h1>
                     <small>{{$store->address}}</small>
@@ -23,6 +34,7 @@
                     <br><br>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores')}}">Back</a>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.edit', $store->id)}}">Edit</a>
+                    <a class="btn btn-primary m-1" href="{{route('admin.stores.changecoverimage', $store->id)}}">{{$store->cover_image == null ? 'Add' : 'Change'}} Cover Photo</a>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.addemployee', $store->id)}}">Add Employee</a>
 
                     <br><br>
@@ -30,7 +42,7 @@
 
                 </div>
 
-                <div class="col-md-5 col-md-offset-1">
+                <div class="col-md-6 mt-3">
 
                     <h3 class="text-primary">Employees</h3>
 

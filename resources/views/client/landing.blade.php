@@ -25,12 +25,7 @@
                         </div>
 
                         <img class="img-fluid round-top-left" src="img/cafes/pic1.jpg" alt="">
-
-
                     </a>
-
-
-
                 </div>
                 <div class="col-md-6 col-lg-4 text-center" >
                     <a class="portfolio-item d-block mx-auto" >
@@ -103,6 +98,19 @@
 
 
 
+
+@endsection
+
+@section('script')
+    <script>
+        @if(Session::has('login_failed'))
+            $('#login').modal('toggle');
+        @endif
+
+        @if($errors->any())
+            $('#register').modal('toggle');
+        @endif
+    </script>
 
 @endsection
 

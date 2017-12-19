@@ -437,5 +437,16 @@ h2.text-primary:focus, h2.text-primary:hover {
   background-size: cover  !important;
 }
 
+.form-horizontal .has-error div input{
+  box-shadow: 0 0 3px #FF0000;
+}
+
+.cover-image{
+  height: 250px !important;
+  width: 100% !important;
+  background-position:center center !important;
+  background-size: cover !important;
+}
+
 
 

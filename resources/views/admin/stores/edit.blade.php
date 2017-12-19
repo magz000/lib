@@ -22,7 +22,7 @@
 
                             <div id="map"></div>
 
-                            <form  role="form" method="POST" action="{{ route('admin.stores.editprocess', $store->id) }}">
+                            <form  role="form" method="POST" enctype="multipart/form-data" action="{{ route('admin.stores.editprocess', $store->id) }}">
                                 {{ csrf_field() }}
 
                                 <input type="hidden" name="_method" value="patch" />

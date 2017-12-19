@@ -26,6 +26,13 @@ class ClientController extends Controller
     }
 
     public function home(){
+        $groupchat = Groupchat::where('user_id', Auth::user()->id)
+                                    ->whereIn('status', [0,1])->first();
+
+
+        if(!empty($groupchat)) {
+            return redirect()->route('client.stores.show', $groupchat->store_id);
+        }
 
         return view('client.home');
     }
@@ -100,24 +107,6 @@ class ClientController extends Controller
 
     }
 
-    public function login(Request $request){
-        $this->validate($request, [
-            "email" => 'required',
-            "password"  => 'required',
-        ]);
-
-        if(Auth::attempt([
-            'email'     => $request->input('email'),
-            'password'  => $request->input('password'),
-            'type' => 3,
-        ])) {
-            return redirect()->route('client.home');
-        } else {
-            Session::flash('flash_message', 'Email or Password is Incorrect.');
-            return redirect(url()->previous());
-        }
-    }
-
     public function updateRequest($id, $status){
         $groupchat = Groupchat::findOrFail($id);
 
@@ -132,6 +121,26 @@ class ClientController extends Controller
 
         return $groupchats->status;
     }
+
+    public function login(Request $request){
+        $this->validate($request, [
+            "email" => 'required',
+            "password"  => 'required',
+        ]);
+
+        if(Auth::attempt([
+            'email'     => $request->input('email'),
+            'password'  => $request->input('password'),
+            'type' => 3,
+        ])) {
+            return redirect()->route('client.home');
+        } else {
+            Session::flash('login_failed', 'Email or Password is Incorrect.');
+            return redirect(url()->previous());
+        }
+    }
+
+
 
     public function logout() {
         Auth::logout();
@@ -152,6 +161,17 @@ class ClientController extends Controller
         $user->name = $request->name;
         $user->type = 3;
         $user->save();
+
+        if(Auth::attempt([
+            'email'     => $request->email,
+            'password'  => $request->password,
+            'type' => 3,
+        ])){
+            return redirect()->route('client.home');
+        }else {
+            Session::flash('login_failed', 'Email or Password is Incorrect.');
+            return redirect(url()->previous());
+        }
 
         Session::flash('registration_successful', 'Registration Successful.');
 

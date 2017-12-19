@@ -21,7 +21,7 @@
                     <br>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#avatar">Change Avatar</button>
 
-                    <br>
+                    <br><br>
 
                     <form  role="form" method="POST" action="{{ route('client.profile.editprocess', $user->id) }}">
                         {{ csrf_field() }}

@@ -1,3 +1,8 @@
+
+@if($store->pending_groupchat->count() < 1)
+    <p class="text-secondary mt-3">No Pending Request</p>
+@endif
+
 @foreach($store->pending_groupchat as $groupchat)
     @php
         $user = $groupchat->user;

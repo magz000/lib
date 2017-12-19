@@ -1,6 +1,6 @@
 <!-- About Section -->
-<section class="bg-white text-secondary pb-0" id="about">
-    <div class="container">
+<section class="bg-white text-secondary" id="about">
+    <div class="container p-4">
         <h2 class="text-center text-uppercase text-secondary">About</h2>
         {{--<hr class="star-dark mb-5">--}}
         <div class="row">

@@ -14,19 +14,26 @@
 
             <div class="card-body">
                 <a href="{{route('client.stores.show', $store->id)}}"  style="text-decoration:none;">
-                    <div class="rounded-circle float-left mr-3"
-                         style="background: url('/img/portfolio/cake.png'); background-position:center center; height: 60px; width: 60px; background-size: cover;">
-                    </div>
-                        <div class="text-primary lead mb-0" id="name{{$store->id}}">
-                            {{$store->name}}</div>
 
-                        <small class="text-secondary">
-                            {{$store->address}}
-                        </small>
-                        <br>
-                        <small class="text-secondary">
-                            Distance: {{round($store->distance($latitude, $longitude), 2)}} km
-                        </small>
+                    <div class="row">
+
+                        <div class="rounded-circle avatar-md mr-3 mb-3"
+                             style="background: url('/img/portfolio/cake.png');">
+                        </div>
+
+                        <div >
+                            <div class="text-primary lead mb-0" id="name{{$store->id}}">
+                                {{$store->name}}</div>
+
+                            <small class="text-secondary">
+                                {{$store->address}}
+                            </small>
+                            <br>
+                            <small class="text-secondary">
+                                Distance: {{round($store->distance($latitude, $longitude), 2)}} km
+                            </small>
+                        </div>
+
                     </div>
                 </a>
 

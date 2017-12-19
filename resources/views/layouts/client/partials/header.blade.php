@@ -11,17 +11,17 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" style="height: 50%" src="img/cafes/carousel1.jpg" alt="First slide">
+                <img class="d-block w-100" style="height: 50%" src="img/cafes/view1.png" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     {{--<img class="img-fluid mb-5 d-block mx-auto" style="max-height: 200px; !important" src="{{asset('img/book.png')}}" alt="">--}}
                     <h1 class="text-uppercase mb-0 text-primary display-1">LIB</h1>
                     {{--<hr class="star-dark">--}}
-                    <p class="font-weight-light mb-0 text-secondary">WORK, LEARN, MEET</p>
+                    <p class="font-weight-light mb-0 text-white">WORK, LEARN, MEET</p>
                 </div>
 
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img/cafes/carousel2.jpg" alt="Second slide">
+                <img class="d-block w-100" src="img/cafes/view2.png" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     {{--<img class="img-fluid mb-5 d-block mx-auto" style="max-height: 200px; !important" src="{{asset('img/book.png')}}" alt="">--}}
                     <h1 class="text-uppercase mb-0 text-primary display-1">LIB</h1>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img/cafes/carousel3.jpg" alt="Third slide">
+                <img class="d-block w-100" src="img/cafes/view3.png" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     {{--<img class="img-fluid mb-5 d-block mx-auto" style="max-height: 200px; !important" src="{{asset('img/book.png')}}" alt="">--}}
                     <h1 class="text-uppercase mb-0 text-primary display-1">LIB</h1>

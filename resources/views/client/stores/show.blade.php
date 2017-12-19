@@ -2,8 +2,14 @@
 
 @section('content')
 
-    <section>
-        <div class="container p-5">
+    <section class="pt-5">
+        <div class="">
+
+            @if($store->cover_image != null)
+                <div class="cover-image"
+                     style="background: url('/img/covers/{{$store->cover_image}}');">
+                </div>
+            @endif
 
             @if(Session::has('flash_message'))
                 <div class="alert alert-success">
@@ -11,7 +17,7 @@
                 </div>
             @endif
 
-            <div class="row justify-content-center">
+            <div class="row p-5 justify-content-center">
                 <div class="col-md-10 col-md-offset-1">
 
                     <h1 class="text-primary">{{$store->name}}</h1>
@@ -30,9 +36,9 @@
 
 
                     <br><br>
-                    <a class="btn btn-primary m-1" href="{{route('client.home')}}">Back</a>
 
                     @if(!$store->user_already_accepted(Auth::user()->id) && !$store->user_already_pending(Auth::user()->id))
+                        <a class="btn btn-primary m-1" href="{{route('client.home')}}">Back</a>
                         <a class="btn btn-primary m-1 text-white" data-toggle="modal" data-target="#join-{{$store->id}}">Join</a>
                     @endif
 

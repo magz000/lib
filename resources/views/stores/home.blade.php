@@ -12,104 +12,117 @@
 
                     <br><br><br>
 
-                    <h4 class="text-primary">
-                        Requests to Join
-                    </h4>
+                    <div class="row">
 
-                    <div class="row justify-content-center" id="pending-container">
+                        <div class="col-md-6">
+                            <h4 class="text-primary">
+                                Requests to Join
+                            </h4>
 
-                    @foreach($store->pending_groupchat as $groupchat)
-                        @php
-                            $user = $groupchat->user;
-                        @endphp
+                            <div class="row justify-content-center" id="pending-container">
 
-                        <div class="card col-md-10 mt-2 shadow">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="rounded-circle float-left mr-3 avatar-md"
-                                         style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
+                                @foreach($store->pending_groupchat as $groupchat)
+                                    @php
+                                        $user = $groupchat->user;
+                                    @endphp
+
+                                    <div class="card col-md-10 mt-2 shadow">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="rounded-circle float-left mr-3 avatar-md"
+                                                     style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
+                                                </div>
+                                                <div>
+                                                    <div class="text-primary lead mb-0">
+                                                        {{$user->name}}</div>
+
+                                                    <small class="text-secondary">
+                                                        {{$user->email}}
+                                                    </small>
+                                                    <br>
+
+                                                    @if($user->skills != null)
+                                                        <small class="text-secondary">
+                                                            Skills: {{$user->skills}}
+                                                        </small><br>
+                                                    @endif
+
+
+                                                    @if($user->looking_for != null)
+                                                        <small class="text-secondary">
+                                                            Looking for: {{$user->looking_for}}
+                                                        </small><br>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <a class="btn btn-danger text-white pull-right"
+                                               href="{{route('stores.updaterequest', [$groupchat->id, 2])}}">Decline</a>
+                                            <a class="btn btn-primary text-white pull-right mx-1"
+                                               href="{{route('stores.updaterequest', [$groupchat->id, 1])}}">Accept</a>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div class="text-primary lead mb-0">
-                                            {{$user->name}}</div>
+                                @endforeach
 
-                                        <small class="text-secondary">
-                                            {{$user->email}}
-                                        </small><br>
-
-                                        @if($user->skills != null)
-                                            <small class="text-secondary">
-                                                Skills: {{$user->skills}}
-                                            </small><br>
-                                        @endif
-
-
-                                        @if($user->looking_for != null)
-                                            <small class="text-secondary">
-                                                Looking for: {{$user->looking_for}}
-                                            </small><br>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <a class="btn btn-danger text-white pull-right" href="{{route('stores.updaterequest', [$groupchat->id, 2])}}">Decline</a>
-                                <a class="btn btn-primary text-white pull-right mx-1" href="{{route('stores.updaterequest', [$groupchat->id, 1])}}">Accept</a>
                             </div>
+
                         </div>
-                    @endforeach
+
+                        <div class="col-md-6">
+
+                            <h4 class="text-primary">
+                                Accepted
+                            </h4>
+
+                            <div class="row justify-content-center" id="accepted-container">
+
+                                @foreach($store->accepted_groupchat as $groupchat)
+                                    @php
+                                        $user = $groupchat->user;
+                                    @endphp
+
+                                    <div class="card col-md-10 mt-2 shadow">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="rounded-circle mr-3 avatar-md"
+                                                     style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
+                                                </div>
+                                                <div>
+                                                    <div class="text-primary lead mb-0">
+                                                        {{$user->name}}</div>
+
+                                                    <small class="text-secondary">
+                                                        {{$user->email}}
+                                                    </small>
+                                                    <br>
+
+                                                    @if($user->skills != null)
+                                                        <small class="text-secondary">
+                                                            Skills: {{$user->skills}}
+                                                        </small><br>
+                                                    @endif
+
+
+                                                    @if($user->looking_for != null)
+                                                        <small class="text-secondary">
+                                                            Looking for: {{$user->looking_for}}
+                                                        </small><br>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <a class="btn btn-danger text-white pull-right"
+                                               href="{{route('stores.updaterequest', [$groupchat->id, 3])}}">Remove</a>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+
+                        </div>
 
                     </div>
-
-                    <br><br><br>
-
-                    <h4 class="text-primary">
-                        Accepted
-                    </h4>
-
-                    <div class="row justify-content-center" id="accepted-container">
-
-                    @foreach($store->accepted_groupchat as $groupchat)
-                        @php
-                            $user = $groupchat->user;
-                        @endphp
-
-                        <div class="card col-md-10 mt-2 shadow">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="rounded-circle mr-3 avatar-md"
-                                         style="background: url('/img/avatar/{{ ($user->avatar != null ? $user->avatar->link : 'user.png') }}');">
-                                    </div>
-                                    <div>
-                                        <div class="text-primary lead mb-0">
-                                            {{$user->name}}</div>
-
-                                        <small class="text-secondary">
-                                            {{$user->email}}
-                                        </small><br>
-
-                                        @if($user->skills != null)
-                                            <small class="text-secondary">
-                                                Skills: {{$user->skills}}
-                                            </small><br>
-                                        @endif
-
-
-                                        @if($user->looking_for != null)
-                                            <small class="text-secondary">
-                                                Looking for: {{$user->looking_for}}
-                                            </small><br>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <br>
-                                <a class="btn btn-danger text-white pull-right" href="{{route('stores.updaterequest', [$groupchat->id, 3])}}">Remove</a>
-                            </div>
-                        </div>
-                    @endforeach
-
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -122,12 +135,12 @@
         //     window.location.reload(true);
         // }, 5000)
 
-        setInterval(function(){
+        setInterval(function () {
             $.ajax({
                 url: "{{route('stores.getrequest.pending')}}",
                 type: "GET",
                 dataType: "html",
-                success: function(data){
+                success: function (data) {
                     $('#pending-container').html(data);
                 }
             });
@@ -136,7 +149,7 @@
                 url: "{{route('stores.getrequest.accepted')}}",
                 type: "GET",
                 dataType: "html",
-                success: function(data){
+                success: function (data) {
                     $('#accepted-container').html(data);
                 }
             });

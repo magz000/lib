@@ -12,9 +12,9 @@
                             <form class="form-horizontal" role="form" method="POST" action="{{ route('client.loginprocess') }}">
                                 {{ csrf_field() }}
 
-                                @if(Session::has('flash_message'))
+                                @if(Session::has('login_failed'))
                                     <div class="alert alert-danger">
-                                        {{ Session::get('flash_message') }}
+                                        {{ Session::get('login_failed') }}
                                     </div>
                                 @endif
 
