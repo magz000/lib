@@ -24,8 +24,16 @@ class Store extends Model
 
     }
 
+    public function user(){
+        return $this->hasMany('App\User');
+    }
+
     public function groupchat(){
         return $this->hasMany('App\Groupchat');
+    }
+
+    public function photo(){
+        return $this->hasMany('App\Photo');
     }
 
 

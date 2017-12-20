@@ -121,11 +121,6 @@
     <script>
         $('#search-container').hide();
 
-        $('.alert').click(function(){
-            $(this).hide();
-        });
-
-
         $('#query').keyup(function(){
             var query = $(this).val();
 

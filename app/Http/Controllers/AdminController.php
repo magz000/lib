@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -56,7 +57,7 @@ class AdminController extends Controller
 
         Session::flash('flash_message', 'Successfully added!');
 
-        return redirect()->route('admin.stores');
+        return redirect()->route('admin.stores.show', $store->id);
     }
 
     public function showStore($id)
@@ -93,7 +94,7 @@ class AdminController extends Controller
     public function changeCoverImage($id){
         $store = Store::findOrFail($id);
 
-        return view('admin.stores.changecoverimage', ['store' => $store]);
+        return view('admin.stores.change_cover_image', ['store' => $store]);
     }
 
     public function changeCoverImageProcess(Request $request, $id){
@@ -123,10 +124,61 @@ class AdminController extends Controller
 
             return redirect()->route('admin.stores.show', $id);
         }else{
-            Session::flash('upload_failed', 'Upload Failed!');
+            Session::flash('upload_failed', 'No file uploaded');
+
+            return redirect()->back();
+        }
+
+    }
+
+    public function addPhotos($id){
+        $store = Store::findOrFail($id);
+
+        return view('admin.stores.add_photos', ['store' => $store]);
+    }
+
+    public function addPhotosProcess(Request $request, $id){
+        if($request->hasFile('photos')) {
+            $files = $request->photos;
+
+            $ctr = 0;
+
+            foreach ($files as $file) {
+                $filename = $id.'-'. date('YmdHis') . '-' . $ctr . '.' .$file->getClientOriginalExtension();
+                $destinationPath = 'img/photos/' . $id;
+
+                $photo = new Photo;
+                $photo->store_id = $id;
+                $photo->file_name = $filename;
+                $photo->save();
+
+                $file->move($destinationPath, $filename);
+
+                $ctr++;
+            }
 
             return redirect()->route('admin.stores.show', $id);
+        }else{
+            Session::flash('upload_failed', 'No file uploaded');
+
+            return redirect()->back();
         }
+    }
+
+    public function deletePhoto($id){
+        $photo = Photo::findOrFail($id);
+
+        $destinationPath = 'img/photos/' . $photo->store_id;
+
+        if(file_exists($destinationPath . '/' . $photo->file_name))
+            unlink($destinationPath . '/' . $photo->file_name) or die("Couldn't delete file");
+
+
+        $photo->delete();
+
+        Session::flash('flash_message', 'Successfully deleted!');
+
+        return redirect()->back();
 
     }
 

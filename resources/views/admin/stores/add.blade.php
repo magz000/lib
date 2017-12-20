@@ -6,78 +6,88 @@
         <div class="container p-5">
             <div class="row justify-content-center">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="card panel-default">
-                        <div class="card-heading p-2 bg-primary text-white">Add Store</div>
-
-                        <div class="card-body">
-                            <a class="btn-primary text-white rounded p-2 pull-right" href="{{url('admin/stores')}}"> Back </a>
-
-                            @if($errors->any())
-                                <div class="alert alert-danger">
-                                    @foreach($errors->all() as $error)
-                                        <p>{{ $error }}</p>
-                                    @endforeach
-                                </div>
-                            @endif
-
-                            <div id="map"></div>
-
-                            <form  role="form" method="POST" enctype="multipart/form-data" action="{{ route('admin.stores.addprocess') }}">
-                                {{ csrf_field() }}
-
-                                <div class="form-group">
-                                    <label for="name" class="col-md-6 control-label text-secondary">Name</label>
-
-                                    <div class="col-lg-10 col-md-8">
-                                        <input id="name" type="text" class="form-control" name="name"
-                                               value="{{ isset($store) ?  $store->name : old('name') }}" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="address" class="col-md-6 control-label text-secondary">Address</label>
-
-                                    <div class="col-lg-10 col-md-12">
-                                        <input id="address" type="text" class="form-control" name="address"
-                                               value="{{ isset($store) ?  $store->address :  old('address') }}" readonly required>
-                                    </div>
-                                </div>
-
-                                <div class="row form-group">
-
-                                    <div class="form-group col-lg-5 col-md-6">
-                                        <label for="latitude" class="col-md-6 control-label text-secondary">Latitude</label>
-
-                                        <div  class="col-md-12">
-                                            <input id="latitude" type="text" class="form-control" name="latitude"
-                                                   value="{{ isset($store) ?  $store->latitude : old('latitude') }}" readonly required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-lg-5 col-md-6">
-                                        <label for="longitude" class="col-md-6 control-label text-secondary">Longitude</label>
-
-                                        <div class="col-md-12" >
-                                            <input id="longitude" type="text" class="form-control" name="longitude"
-                                                   value="{{ isset($store) ?  $store->longitude : old('longitude') }}" readonly required>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Save
-                                        </button>
-                                    </div>
-                                </div>
 
 
-                            </form>
+                    <a class="btn-primary text-white rounded p-2 pull-right" href="{{url('admin/stores')}}"> Back </a>
 
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
                         </div>
+                    @endif
+
+                    <h1 class="text-primary">Add Store</h1>
+
+                    <div class="p-5">
+
+                        <div id="map"></div>
+
+                        <form role="form" method="POST" enctype="multipart/form-data"
+                              action="{{ route('admin.stores.addprocess') }}">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <label for="name" class="col-md-6 control-label text-secondary">Name</label>
+
+                                <div class="col-lg-10 col-md-8">
+                                    <input id="name" type="text" class="form-control" name="name"
+                                           value="{{ isset($store) ?  $store->name : old('name') }}" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address" class="col-md-6 control-label text-secondary">Address</label>
+
+                                <div class="col-lg-10 col-md-12">
+                                    <input id="address" type="text" class="form-control" name="address"
+                                           value="{{ isset($store) ?  $store->address :  old('address') }}" readonly
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+
+                                <div class="form-group col-lg-5 col-md-6">
+                                    <label for="latitude" class="col-md-6 control-label text-secondary">Latitude</label>
+
+                                    <div class="col-md-12">
+                                        <input id="latitude" type="text" class="form-control" name="latitude"
+                                               value="{{ isset($store) ?  $store->latitude : old('latitude') }}"
+                                               readonly
+                                               required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-5 col-md-6">
+                                    <label for="longitude"
+                                           class="col-md-6 control-label text-secondary">Longitude</label>
+
+                                    <div class="col-md-12">
+                                        <input id="longitude" type="text" class="form-control" name="longitude"
+                                               value="{{ isset($store) ?  $store->longitude : old('longitude') }}"
+                                               readonly
+                                               required>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </form>
+
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -99,26 +109,26 @@
 
             var markers = [];
 
-            @if(isset($store))
-                var location = {lat: {{$store->latitude}}, lng: {{$store->longitude}}};
+                    @if(isset($store))
+            var location = {lat: {{$store->latitude}}, lng: {{$store->longitude}}};
 
-                var marker = new google.maps.Marker({
-                        position: location,
-                        map: map
-                    });
-                markers.push(marker);
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            markers.push(marker);
             @endif
 
 
 
-            google.maps.event.addListener(map, 'click', function(event) {
+            google.maps.event.addListener(map, 'click', function (event) {
                 placeMarker(event.latLng);
 
                 $('#latitude').val(event.latLng.lat);
                 $('#longitude').val(event.latLng.lng);
 
 
-                geocoder.geocode({'location': event.latLng}, function(results, status) {
+                geocoder.geocode({'location': event.latLng}, function (results, status) {
                     if (status === 'OK') {
                         if (results[0]) {
                             map.setZoom(11);
@@ -136,7 +146,7 @@
             });
 
             function placeMarker(location) {
-                if(markers.length > 0) {
+                if (markers.length > 0) {
                     markers[0].setMap(null);
 
                     markers = [];
@@ -149,7 +159,6 @@
                 markers.push(marker);
 
             }
-
 
 
         }

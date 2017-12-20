@@ -41,9 +41,7 @@
 
 @section('script')
     <script>
-        $('.alert').click(function(){
-            $(this).hide();
-        });
+
     </script>
 @endsection
 

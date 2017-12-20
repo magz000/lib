@@ -6,10 +6,8 @@
         <div class="container p-5">
             <div class="row justify-content-center">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="card panel-default">
-                        <div class="card-heading p-2 bg-primary text-white">Edit Store</div>
 
-                        <div class="card-body">
+
                             <a class="btn-primary text-white rounded p-2 pull-right" href="{{ route('admin.stores.show', $store->id) }}"> Back </a>
 
                             @if($errors->any())
@@ -19,6 +17,11 @@
                                     @endforeach
                                 </div>
                             @endif
+
+
+                            <h1 class="text-primary">Edit Store</h1>
+
+                            <div class="p-5">
 
                             <div id="map"></div>
 
@@ -79,7 +82,7 @@
                             </form>
 
                         </div>
-                    </div>
+
                 </div>
             </div>
         </div>

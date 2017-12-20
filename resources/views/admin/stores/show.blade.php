@@ -18,7 +18,7 @@
             @endif
 
             @if(Session::has('upload_failed'))
-                <div class="alert alert-success mt-5 mx-5">
+                <div class="alert alert-danger mt-5 mx-5">
                     {{ Session::get('upload_failed') }}
                 </div>
              @endif
@@ -35,10 +35,59 @@
                     <a class="btn btn-primary m-1" href="{{route('admin.stores')}}">Back</a>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.edit', $store->id)}}">Edit</a>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.changecoverimage', $store->id)}}">{{$store->cover_image == null ? 'Add' : 'Change'}} Cover Photo</a>
+                    <a class="btn btn-primary m-1" href="{{route('admin.stores.addphotos', $store->id)}}">Add Photos</a>
                     <a class="btn btn-primary m-1" href="{{route('admin.stores.addemployee', $store->id)}}">Add Employee</a>
 
                     <br><br>
                     <br><br>
+
+                    <h3 class="text-primary">Photos</h3>
+
+                    <div class="row">
+
+                        @foreach($store->photo as $photo)
+                            <div class="m-1 p-1" style="background: url({{asset('/img/photos/'.$store->id.'/'. $photo->file_name)}}); width: 120px; height: 80px; background-position: center center !important;
+                                    background-size: cover !important;">
+                                <button class="close" data-toggle="modal" data-target="#deletephoto-{{$photo->id}}">
+                                    &times;
+                                </button>
+
+                                {{--<img src="{{asset('/img/photos/'.$store->id.'/'. $photo->file_name)}}"--}}
+                                     {{--style="max-width: 100px;">--}}
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="deletephoto-{{$photo->id}}" tabindex="-1" role="dialog"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Delete Photo</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel
+                                            </button>
+
+                                            <form action="{{route('admin.stores.deletephoto', $photo->id)}}"
+                                                  method="post">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="_method" value="delete"/>
+                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
 
                 </div>
 
@@ -83,7 +132,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Delete Store</h5>
+                                            <h5 class="modal-title">Delete Employee</h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -122,9 +171,7 @@
 
 @section('script')
     <script>
-        $('.alert').click(function () {
-            $(this).hide();
-        });
+
     </script>
 
 @endsection

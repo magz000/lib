@@ -41,6 +41,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Groupchat');
     }
 
+    public function store(){
+        return $this->belongsTo('App\Store');
+    }
+
     public function avatar(){
         return $this->belongsTo('App\Avatar');
     }

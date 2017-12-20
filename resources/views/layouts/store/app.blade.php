@@ -66,5 +66,12 @@
 
 
     @yield('script')
+
+
+    <script>
+        $('.alert').click(function () {
+            $(this).hide();
+        });
+    </script>
 </body>
 </html>

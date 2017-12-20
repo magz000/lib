@@ -249,11 +249,6 @@
 
 @section('script')
     <script>
-        $('.alert').click(function () {
-            $(this).hide();
-        });
-
-
         var userSelected;
         var channel;
 

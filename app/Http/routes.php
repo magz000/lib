@@ -88,6 +88,12 @@ Route::group(["prefix" => "admin"],function(){
 
         Route::patch('stores/{id}/changecoverimage', 'AdminController@changeCoverImageProcess')->name('admin.stores.changecoverimageprocess');
 
+        Route::get('stores/{id}/addphotos', 'AdminController@addPhotos')->name('admin.stores.addphotos');
+
+        Route::patch('stores/{id}/addphotos', 'AdminController@addPhotosProcess')->name('admin.stores.addphotosprocess');
+
+        Route::delete('stores/{id}/deletephoto', 'AdminController@deletePhoto')->name('admin.stores.deletephoto');
+
         Route::get('stores/search', 'AdminController@query')->name('admin.stores.search');
 
         Route::get('stores/{id}/addemployee', 'AdminController@addEmployee')->name('admin.stores.addemployee');
