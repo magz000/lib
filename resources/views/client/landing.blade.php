@@ -45,7 +45,7 @@
 
                 </div>
                 <div class="col-md-6 col-lg-4 text-center">
-                    <a class="portfolio-item d-block mx-auto position-relative" style="z-index: 2">
+                    <a class="portfolio-item d-block mx-auto position-relative" >
                         <div class="portfolio-item-caption d-flex position-absolute h-100 w-100 round-top-left">
                             <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
                                 {{--<i class="fa fa-search-plus fa-3x"></i>--}}

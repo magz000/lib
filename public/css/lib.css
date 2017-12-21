@@ -567,9 +567,6 @@ h2.text-primary:focus, h2.text-primary:hover {
     background-size: cover !important;
 }
 
-
-
-
 .input-file-container {
     position: relative;
     width: 9rem;
@@ -588,7 +585,9 @@ h2.text-primary:focus, h2.text-primary:hover {
 }
 
 .input-file:hover + .input-file-trigger,
-.input-file-trigger:hover{
+.input-file:active + .input-file-trigger,
+.input-file-trigger:hover
+.input-file-trigger:active{
     background: #2c756b;
 }
 
@@ -601,6 +600,68 @@ h2.text-primary:focus, h2.text-primary:hover {
     padding: 14px 0;
     cursor: pointer;
 }
+
+
+.image-view {
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+    opacity: 0;
+}
+
+.image-view-option-top, .image-view-option-bottom {
+    position: absolute;
+    background-color: rgba(16, 16, 16, 0.5);
+    width:100%;
+    color: white;
+    height: 2rem;
+    padding: .25rem 1rem .25rem 2rem;
+
+}
+
+.image-view-option-top{
+    top: 0;
+}
+
+.image-view-option-bottom {
+    bottom: 0;
+}
+
+.image-view:hover {
+    opacity: 1;
+}
+
+.close2 {
+    float: right;
+    background: transparent;
+    -webkit-appearance: none;
+    border: 0;
+    color: white;
+    opacity: .6;
+}
+
+
+.carousel-control-next, .carousel-control-prev {
+    margin: 2rem 0rem 2rem 0rem;
+}
+
+.btn-primary-white {
+    background: transparent;
+    -webkit-appearance: none;
+    border: 0;
+    color: #3c9f92;
+}
+
+
+.btn-primary-white:hover {
+    color: #2c756b;
+}
+
+
+
+
+
+
 
 
 

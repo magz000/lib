@@ -36,6 +36,11 @@ class Store extends Model
         return $this->hasMany('App\Photo');
     }
 
+    public function testing($status) {
+        return $this->groupchat()->where('status', '=', $status);
+
+    }
+
 
     public function pending_groupchat() {
         return $this->groupchat()->where('status', '=', 0);

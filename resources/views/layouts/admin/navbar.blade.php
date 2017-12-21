@@ -1,4 +1,4 @@
-<nav class="navbar-expand-lg navbar fixed-top bg-primary py-1" id="mainNav2"> {{-- --}}
+<nav class="navbar-expand-lg navbar fixed-top bg-primary py-1" id="mainNav"> {{-- --}}
     <div class="container">
         <a class="navbar-brand js-scroll-trigger text-white" href="{{ route('admin.login') }}">LIB Admin</a>
 

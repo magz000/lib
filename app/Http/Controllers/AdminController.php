@@ -64,8 +64,6 @@ class AdminController extends Controller
     {
         $store = Store::findOrFail($id);
 
-        $employees = User::where('store_id', '=', $id)->get();
-
         return view('admin.stores.show', ['store' => $store, 'employees' => $employees]);
     }
 
