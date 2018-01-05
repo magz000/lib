@@ -21,7 +21,7 @@
 
                             <div class="row justify-content-center" id="pending-container">
 
-                                @foreach($store->pending_groupchat as $groupchat)
+                                @foreach($store->getGroupchatWithStatus(0) as $groupchat)
                                     @php
                                         $user = $groupchat->user;
                                     @endphp
@@ -76,7 +76,7 @@
 
                             <div class="row justify-content-center" id="accepted-container">
 
-                                @foreach($store->accepted_groupchat as $groupchat)
+                                @foreach($store->getGroupchatWithStatus(1) as $groupchat)
                                     @php
                                         $user = $groupchat->user;
                                     @endphp

@@ -1,8 +1,8 @@
-@if($store->accepted_groupchat->count() < 1)
+@if($store->getGroupchatWithStatus(1)->count() < 1)
     <p class="text-secondary mt-3">No Accepted Request</p>
 @endif
 
-@foreach($store->accepted_groupchat as $groupchat)
+@foreach($store->getGroupchatWithStatus(1) as $groupchat)
     @php
         $user = $groupchat->user;
     @endphp

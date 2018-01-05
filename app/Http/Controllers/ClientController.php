@@ -77,6 +77,12 @@ class ClientController extends Controller
         return redirect(url()->previous());
     }
 
+    public function groupchat($id){
+        $store = Store::findOrFail($id);
+
+        return view('client.stores.groupchat', ['store' => $store]);
+    }
+
     public function profile($id){
         $user = User::findOrFail($id);
 

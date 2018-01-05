@@ -36,27 +36,10 @@ class Store extends Model
         return $this->hasMany('App\Photo');
     }
 
-    public function testing($status) {
-        return $this->groupchat()->where('status', '=', $status);
-
+    public function getGroupchatWithStatus($status){
+        return $this->groupchat()->where('status', '=', $status)->get();
     }
 
-
-    public function pending_groupchat() {
-        return $this->groupchat()->where('status', '=', 0);
-    }
-
-    public function accepted_groupchat() {
-        return $this->groupchat()->where('status', '=', 1);
-    }
-
-    public function declined_groupchat() {
-        return $this->groupchat()->where('status', '=', 2);
-    }
-
-    public function removed_groupchat() {
-        return $this->groupchat()->where('status', '=', 3);
-    }
 
     public function user_already_accepted($id){
         return $this->groupchat()->where('status', '=', 1)->where('user_id', '=', $id)->count() > 0;

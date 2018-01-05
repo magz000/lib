@@ -46,6 +46,8 @@ Route::group(["prefix" => "client"], function(){
 
         Route::post('stores/join/{id}/{store_id}', 'ClientController@joinGroup')->name('client.stores.join');
 
+        Route::get('stores/{id}/groupchat', 'ClientController@groupchat')->name('client.stores.groupchat');
+
         Route::get('stores/{id}/show', 'ClientController@showStore')->name('client.stores.show');
 
         Route::get('groupchat/{id}/status', 'ClientController@getStatus')->name('client.groupchat.status');
@@ -79,6 +81,8 @@ Route::group(["prefix" => "admin"],function(){
         Route::get('stores/{id}/show/', 'AdminController@showStore')->name("admin.stores.show");
 
         Route::get('stores/{id}/edit/', 'AdminController@editStore')->name("admin.stores.edit");
+
+
 
         Route::patch('stores/{id}/edit', 'AdminController@editStoreProcess')->name("admin.stores.editprocess");
 
