@@ -64,7 +64,7 @@ class AdminController extends Controller
     {
         $store = Store::findOrFail($id);
 
-        return view('admin.stores.show', ['store' => $store, 'employees' => $employees]);
+        return view('admin.stores.show', ['store' => $store]);
     }
 
     public function editStore($id){
